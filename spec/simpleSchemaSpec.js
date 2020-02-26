@@ -1,13 +1,18 @@
+const fs = require('fs');
+const path = require('path');
 const ZSchema = require("z-schema");
-const validator = new ZSchema();
-
-const json = require("./data/dumper.json");
-const schemas = require("./data/table_schema.js");
+const zSchema = new ZSchema();
+const validator = require('../src/index')
 
 describe("Simple Schema Spec", function () {
+    it('default schema is valid', function () {
+        const schemas = require("../schemas/table_schema.js");
+        expect(zSchema.validateSchema(schemas)).toBeTruthy();
+    })
     it("validates example schema", function () {
-        const valid = validator.validate(json, schemas[schemas.length - 1]);
-        console.info(validator.getLastErrors())
-        expect(valid).toBe(true);
+        const filename = path.resolve(__dirname, 'data/sample_document.yml');
+        const contents = fs.readFileSync(filename, 'utf8');
+        const valid = validator.validateYaml(contents);
+        expect(valid).toBeTruthy();
     })
 });
