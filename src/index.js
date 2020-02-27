@@ -12,11 +12,12 @@ module.exports = {
         const object = yaml.safeLoad(stringYaml);
         const defaultSchema = schemas[schemas.length - 1];
         validator.validateSchema(schemas);
-        const valid = validator.validate(object, defaultSchema);
-        console.info(object);
-        console.info(defaultSchema);
-        console.info(stringYaml);
-        console.info(validator.getLastError());
-        return valid
+        return validator.validate(object, defaultSchema);
+    },
+    yamlToObject(stringYaml) {
+        return yaml.safeLoad(stringYaml);
+    },
+    getSchemas: function () {
+        return schemas;
     }
 };
