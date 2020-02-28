@@ -19,11 +19,17 @@ const allSchemas = [
         "additionalItems": false
     },
     {
-        id: "columnDetails",
-        type: "object",
-        properties: {
-            "name": {"type": "string"}
-        }
+        "id": "columnDetails",
+        "type": "object",
+        "properties": {
+            "columns": {
+                "type": "array",
+                "items": {
+                    "type": "object"
+                }
+            }
+        },
+        required: ["columns"]
     },
     {
         id: "tableWithFeatures",

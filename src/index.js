@@ -13,12 +13,14 @@ module.exports = {
         const object = yaml.safeLoad(stringYaml);
         const defaultSchema = schemas[schemas.length - 1];
         validator.validateSchema(schemas);
-        return validator.validate(object, defaultSchema);
+        const valid = validator.validate(object, defaultSchema);
+        return valid;
     },
     validateObject: function (object) {
         validator.validateSchema(schemas);
         const defaultSchema = schemas[schemas.length - 1];
-        return validator.validate(object, defaultSchema);
+        const valid = validator.validate(object, defaultSchema);
+        return valid;
     },
 
     getValidationErrors: () => validator.getLastErrors(),
