@@ -7,7 +7,7 @@ module.exports = {
         "tables": {
             "type": "array",
             "items": {"$ref": "#/definitions/table"},
-            "default": []
+            "minItems": 1,
         }
     },
 
