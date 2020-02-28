@@ -10,8 +10,12 @@ module.exports = {
                 "column": {
                     "type": "object",
                     "properties": {
-                        "name": {"type": "string"}
-                    }
+                        "name": {"type": "string"},
+                        "type": {"type": "string"},
+                        "comments": {"type": "string"},
+                    },
+                    "required": ["name"],
+                    "additionalProperties": false
                 },
                 "relationshipType": {
                     "type": "object",

@@ -3,19 +3,20 @@ tables:
     version: 3.14
     description: "Stores table"
     columns:
-      - name: string
-        length: 200
-      - latitude: float
-      - longitude: float
-      - created: datetime
-      - modified: datetime
+      - name: "name"
+      - name: "latitude"
+        type: "float"
+      - name: "longitude"
+        type: "float"
     features:
-      - timestamps
+      - "timestamps"
   - name: "owners"
     version: 3.14
     description: "Owners table"
     columns:
-      - id: integer
-      - name: string
+      - name: "id"
+        type: "integer"
+      - name: "name"
+        type: "string"
     features:
       - timestamps

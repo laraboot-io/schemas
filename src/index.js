@@ -1,5 +1,9 @@
 const ZSchema = require("z-schema");
-const validator = new ZSchema();
+const {customValidatorFn} = require('./validators');
+const validator = new ZSchema({
+    // register our custom validator inside z-schema
+    customValidator: customValidatorFn
+});
 const yaml = require('js-yaml');
 const schema = require("../schemas");
 let errors = {};
