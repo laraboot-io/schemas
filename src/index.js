@@ -16,6 +16,7 @@ module.exports = {
     },
     validateObject: function (object) {
         validator.validateSchema(schemas);
+        const defaultSchema = schemas[schemas.length - 1];
         return validator.validate(object, defaultSchema);
     },
     yamlToObject(stringYaml) {
