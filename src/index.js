@@ -1,7 +1,7 @@
 const ZSchema = require("z-schema");
 const validator = new ZSchema();
 const yaml = require('js-yaml');
-const schemas = require("../schemas/table_schema.js");
+const schema = require("../schemas");
 let errors = {};
 
 module.exports = {
@@ -9,17 +9,15 @@ module.exports = {
      * validate yaml content against default schema
      * @param stringYaml
      */
-    validateYaml: function (stringYaml) {
+    validateYaml: function (stringYaml, options) {
         const object = yaml.safeLoad(stringYaml);
-        const defaultSchema = schemas[schemas.length - 1];
-        validator.validateSchema(schemas);
-        const valid = validator.validate(object, defaultSchema);
+        validator.validateSchema(schema);
+        const valid = validator.validate(object, schema, options);
         return valid;
     },
-    validateObject: function (object) {
-        validator.validateSchema(schemas);
-        const defaultSchema = schemas[schemas.length - 1];
-        const valid = validator.validate(object, defaultSchema);
+    validateObject: function (object, options) {
+        validator.validateSchema(schema);
+        const valid = validator.validate(object, schema, options);
         return valid;
     },
 
@@ -29,6 +27,6 @@ module.exports = {
         return yaml.safeLoad(stringYaml);
     },
     getSchemas: function () {
-        return schemas;
+        return schema;
     }
 };

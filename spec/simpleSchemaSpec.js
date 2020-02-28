@@ -5,15 +5,18 @@ const zSchema = new ZSchema();
 const validator = require('../src/index')
 
 describe("Simple Schema Spec", function () {
-    it('default schema is valid', function () {
-        const schemas = require("../schemas/table_schema.js");
-        expect(zSchema.validateSchema(schemas)).toBeTruthy();
+
+    it("validates one table schema", function () {
+        const filename = path.resolve(__dirname, 'data/one_table_doc.yml');
+        const contents = fs.readFileSync(filename, 'utf8');
+        const valid = validator.validateYaml(contents, {schemaPath: "definitions.table"});
+        expect(valid).toBeTruthy();
     });
 
-    it("validates example schema", function () {
-        const filename = path.resolve(__dirname, 'data/sample_document.yml');
+    it("validates multiple table schema", function () {
+        const filename = path.resolve(__dirname, 'data/multiple_tables_doc.yml');
         const contents = fs.readFileSync(filename, 'utf8');
-        const valid = validator.validateYaml(contents);
+        const valid = validator.validateYaml(contents, {});
         expect(valid).toBeTruthy();
     });
 

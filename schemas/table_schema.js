@@ -1,47 +1,38 @@
-const allSchemas = [
-    {
-        "id": "tableDetails",
-        "type": "object",
-        "properties": {
-            "version": {type: "number", "maxLength": 5},
-            "description": {type: "string"},
-        },
-        "required": ["version"]
-    },
-    {
-        "id": "featureDetails",
-        "type": "object",
-        "properties": {
-            "features": {
-                "type": "array",
-                "items": {
-                    "type": "string"
-                }
+module.exports = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+
+    "definitions": {
+        "column": {
+            "type": "object",
+            "properties": {
+                "name": {"type": "string"}
             }
+        },
+        "table": {
+            "type": "object",
+            "properties": {
+                "columns": {
+                    "type": "array",
+                    "items": {"type": "object"}
+                }
+            },
+            "required": ["columns"]
         }
     },
-    {
-        "id": "columnDetails",
-        "type": "object",
-        "properties": {
-            "columns": {
-                "type": "array",
-                "items": {
-                    "type": "object"
-                }
-            }
-        },
-        "required": ["columns"]
-    },
-    {
-        "id": "tableWithFeatures",
+
+    "type": "object",
+
+    "properties": {
+        "version": {"type": "number"},
+        "description": {"type": "string"},
         "allOf": [
-            {$ref: "tableDetails"},
-            {$ref: "columnDetails"}
+            {"$ref": "#/definitions/table"}
         ],
-        "anyOf": [
-            {$ref: "featureDetails"}
-        ]
+        "features": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
     }
-];
-module.exports = allSchemas;
+};

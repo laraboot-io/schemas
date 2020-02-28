@@ -1,0 +1,21 @@
+tables:
+  - name: "stores"
+    version: 3.14
+    description: "Stores table"
+    columns:
+      - name: string
+        length: 200
+      - latitude: float
+      - longitude: float
+      - created: datetime
+      - modified: datetime
+    features:
+      - timestamps
+  - name: "owners"
+    version: 3.14
+    description: "Owners table"
+    columns:
+      - id: integer
+      - name: string
+    features:
+      - timestamps
