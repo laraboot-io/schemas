@@ -14,6 +14,10 @@ module.exports = {
         validator.validateSchema(schemas);
         return validator.validate(object, defaultSchema);
     },
+    validateObject: function () {
+        validator.validateSchema(schemas);
+        return validator.validate(object, defaultSchema);
+    },
     yamlToObject(stringYaml) {
         return yaml.safeLoad(stringYaml);
     },
