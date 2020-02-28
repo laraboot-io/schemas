@@ -14,7 +14,7 @@ module.exports = {
         validator.validateSchema(schemas);
         return validator.validate(object, defaultSchema);
     },
-    validateObject: function () {
+    validateObject: function (object) {
         validator.validateSchema(schemas);
         return validator.validate(object, defaultSchema);
     },
