@@ -18,7 +18,6 @@ describe("Simple Schema Spec", function () {
     });
 
     it('expose last errors by calling getValidationErrors', function () {
-        const filename = path.resolve(__dirname, 'data/bad_document.yml');
         const valid = validator.validateYaml(null);
         expect(valid).toBe(false);
         expect(validator.getValidationErrors()).toBeTruthy();
