@@ -6,15 +6,15 @@ const validator = require('../src/index')
 
 describe("Simple Schema Spec", function () {
 
-    it("validates one table schema", function () {
-        const filename = path.resolve(__dirname, 'data/one_table_doc.yml');
+    it("validates one model schema", function () {
+        const filename = path.resolve(__dirname, 'data/one_model_doc.yml');
         const contents = fs.readFileSync(filename, 'utf8');
-        const valid = validator.validateYaml(contents, {schemaPath: "definitions.table"});
+        const valid = validator.validateYaml(contents, {schemaPath: ""});
         expect(valid).toBeTruthy();
     });
 
-    it("validates multiple table schema", function () {
-        const filename = path.resolve(__dirname, 'data/multiple_tables_doc.yml');
+    it("validates multiple model schema", function () {
+        const filename = path.resolve(__dirname, 'data/multiple_models_doc.yml');
         const contents = fs.readFileSync(filename, 'utf8');
         const valid = validator.validateYaml(contents, {});
         expect(valid).toBeTruthy();

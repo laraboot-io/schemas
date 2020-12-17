@@ -1,21 +1,12 @@
-const TableSchema = require('./table_schema');
-const {table} = TableSchema.definitions;
+const FrameworkSchema = require('./framework');
 
 module.exports = {
     "definitions": {
-        table,
-        "tables": {
-            "type": "array",
-            "items": {"$ref": "#/definitions/table"},
-            "minItems": 1,
-        }
+        "Framework": FrameworkSchema.definitions
     },
-
     "type": "object",
-
     "properties": {
-        "tables": {"$ref": "#/definitions/tables"}
+        "Framework": {"$ref": "#/definitions/Framework", "type": "object"}
     },
-
-    "required": ["tables"]
+    "required": ["Framework"]
 };

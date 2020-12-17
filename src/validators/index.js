@@ -1,17 +1,24 @@
+/**
+ *
+ * @param report
+ * @param schema
+ * @param json
+ */
 function customValidatorFn(report, schema, json) {
     // check if our custom property is present
-    if (typeof json == 'object' && Array.isArray(json.tables)) {
+    if (typeof json == 'object' && Array.isArray(json.models)) {
+        const {models} = json;
         let relThree = new Set();
-        const tableNames = new Set(json.tables.map(e => e.name));
-        json.tables.forEach((table) => {
-            if (table.relationships) {
-                const tableRelationships = table.relationships.map(e => Object.values(e));
-                tableRelationships.forEach((v) => {
+        const modelNames = new Set(models.map(e => e.name));
+        models.forEach((model) => {
+            if (model.relationships) {
+                const modelRelationships = model.relationships.map(e => Object.values(e));
+                modelRelationships.forEach((v) => {
                     const name = v[0];
-                    if (!tableNames.has(name)) {
+                    if (!modelNames.has(name)) {
                         // report error back to z-schema core
-                        report.addCustomError("NO_SUCH_TABLE",
-                            "Table \"{0}\" does not exist in the schema",
+                        report.addCustomError("NO_SUCH_model",
+                            "model \"{0}\" does not exist in the schema",
                             [name], null, schema.description);
                     }
                     if (!relThree.has(name))
