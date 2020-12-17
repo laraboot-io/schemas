@@ -1,5 +1,5 @@
 {
-  "name": "database-yaml-schema",
+  "name": "@laraboot-io/schemas",
   "version": "0.0.11",
   "description": "",
   "main": "src/index.js",
