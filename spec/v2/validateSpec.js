@@ -1,11 +1,10 @@
 const ZSchema = require("z-schema");
 const zSchema = new ZSchema();
-const schema = require('../schemas')
+const {v2} = require('../../schemas')
 
 describe("Core", function () {
     it('compiles the whole schema definition', function () {
-        console.info(JSON.stringify(schema, null, 3));
-        expect(zSchema.validateSchema(schema)).toBeTruthy()
+        expect(zSchema.validateSchema(v2)).toBeTruthy()
         console.log(zSchema.getLastErrors());
     })
 });

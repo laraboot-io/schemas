@@ -1,6 +1,7 @@
-const FrameworkSchema = require('./framework');
+// V1
+const FrameworkSchema = require('./library/framework');
 
-module.exports = {
+module.exports.v1 = {
     "definitions": {
         "Framework": FrameworkSchema.definitions
     },
@@ -10,3 +11,7 @@ module.exports = {
     },
     "required": ["Framework"]
 };
+
+// V2
+const schema = require('../schema')
+module.exports.v2 = schema;

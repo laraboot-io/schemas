@@ -1,117 +1,124 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "definitions": {
-    "Auth": {
-      "type": "object"
-    },
-    "Config": {
-      "type": "object"
-    },
-    "Custom": {
-      "properties": {
-        "config": {
-          "$ref": "#/definitions/CustomConfig"
+    "$ref": "#/definitions/Framework",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "Auth": {
+            "additionalProperties": false,
+            "type": "object"
+        },
+        "Config": {
+            "additionalProperties": false,
+            "type": "object"
+        },
+        "Custom": {
+            "additionalProperties": false,
+            "properties": {
+                "config": {
+                    "$ref": "#/definitions/CustomConfig"
+                }
+            },
+            "type": "object"
+        },
+        "CustomConfig": {
+            "additionalProperties": {
+                "type": "string"
+            },
+            "type": "object"
+        },
+        "Framework": {
+            "additionalProperties": false,
+            "properties": {
+                "auth": {
+                    "$ref": "#/definitions/Auth"
+                },
+                "config": {
+                    "items": {
+                        "$ref": "#/definitions/Config"
+                    },
+                    "type": "array"
+                },
+                "custom": {
+                    "$ref": "#/definitions/Custom"
+                },
+                "models": {
+                    "items": {
+                        "$ref": "#/definitions/Model"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Model": {
+            "additionalProperties": false,
+            "properties": {
+                "attributes": {
+                    "additionalProperties": true,
+                    "properties": {
+                    },
+                    "type": "object"
+                },
+                "columns": {
+                    "items": {
+                        "$ref": "#/definitions/ModelColumn"
+                    },
+                    "type": "array"
+                },
+                "connection": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "enum": [
+                        "string"
+                    ],
+                    "type": "string"
+                },
+                "dateFormat": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "incrementing": {
+                    "type": "boolean"
+                },
+                "keyType": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "primaryKey": {
+                    "type": "string"
+                },
+                "timestamps": {
+                    "type": "boolean"
+                },
+                "updatedAt": {
+                    "enum": [
+                        "string"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ModelColumn": {
+            "additionalProperties": {
+            },
+            "properties": {
+                "dataType": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "primaryKey": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
         }
-      },
-      "type": "object"
-    },
-    "CustomConfig": {
-      "additionalProperties": {
-        "type": "string"
-      },
-      "type": "object"
-    },
-    "Framework": {
-      "properties": {
-        "auth": {
-          "$ref": "#/definitions/Auth"
-        },
-        "config": {
-          "items": {
-            "$ref": "#/definitions/Config"
-          },
-          "type": "array"
-        },
-        "custom": {
-          "$ref": "#/definitions/Custom"
-        },
-        "models": {
-          "items": {
-            "$ref": "#/definitions/Model"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "Model": {
-      "properties": {
-        "attributes": {
-          "additionalProperties": true,
-          "properties": {
-          },
-          "type": "object"
-        },
-        "columns": {
-          "items": {
-            "$ref": "#/definitions/ModelColumn"
-          },
-          "type": "array"
-        },
-        "connection": {
-          "type": "string"
-        },
-        "createdAt": {
-          "enum": [
-            "string"
-          ],
-          "type": "string"
-        },
-        "dateFormat": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "incrementing": {
-          "type": "boolean"
-        },
-        "keyType": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "primaryKey": {
-          "type": "string"
-        },
-        "timestamps": {
-          "type": "boolean"
-        },
-        "updatedAt": {
-          "enum": [
-            "string"
-          ],
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "ModelColumn": {
-      "additionalProperties": {
-      },
-      "properties": {
-        "dataType": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "primaryKey": {
-          "type": "boolean"
-        }
-      },
-      "type": "object"
     }
-  }
 }
+

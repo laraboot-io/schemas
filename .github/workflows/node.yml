@@ -26,5 +26,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install typescript-json-schema -g
       - run: yarn
+      - run: typescript-json-schema --noExtraProps --topRef -o schema.json "types/**/*.ts" Framework
       - run: npm run build --if-present
       - run: npm test

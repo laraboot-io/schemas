@@ -39,24 +39,13 @@ interface Model {
 }
 
 
-export interface Framework {
+interface Framework {
     auth: Auth
     custom: Custom
     config: Config[]
     models: Model[]
-    //
-    // /**
-    //  * Specify individual fields in items.
-    //  *
-    //  * @items.type integer
-    //  * @items.minimum 0
-    //  */
-    // sizes: number[];
-    //
-    // /**
-    //  * Or specify a JSON spec:
-    //  *
-    //  * @items {"type":"string","format":"email"}
-    //  */
-    // emails: string[];
+}
+
+class ApplicationSchema{
+    Framework: Framework
 }

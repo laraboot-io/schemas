@@ -17,7 +17,7 @@ function customValidatorFn(report, schema, json) {
                     const name = v[0];
                     if (!modelNames.has(name)) {
                         // report error back to z-schema core
-                        report.addCustomError("NO_SUCH_model",
+                        report.addCustomError("NO_SUCH_MODEL",
                             "model \"{0}\" does not exist in the schema",
                             [name], null, schema.description);
                     }
